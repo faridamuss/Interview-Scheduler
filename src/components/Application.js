@@ -3,21 +3,33 @@ import axios from "axios";
 import DayList from "./DayList";
 import "components/Application.scss";
 import Appointment from "./Appointment";
-import { getAppointmentsForDay } from "helpers/selectors";
+import { getAppointmentsForDay, getInterview } from "helpers/selectors";
+
 
 export default function Application(props) {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    // you may put the line below, but will have to remove/comment hardcoded appointments variable
-    appointments: {}
+    appointments: {},
+    interviewers: {}
   });
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
 
+  const schedule = dailyAppointments.map(appointment => {
+    const interview = getInterview(state, appointment.interview)
+    return (
+      <Appointment 
+        key={appointment.id} 
+        id={appointment.id}
+        time={appointment.time}
+        interview={interview}
+      />
+    )
+  });
+
   const setDay = day => setState({ ...state, day });
-  // const setDays = days => setState(prev => ({...prev, days}))
-  
+
   useEffect(() => {
     Promise.all([
       axios.get("/api/days"),
@@ -30,7 +42,6 @@ export default function Application(props) {
         interviewers: all[2].data
       }))
       console.log(all)
-      // setDays(response.data)
     })
   }, []);
 
@@ -44,11 +55,11 @@ export default function Application(props) {
 />
 <hr className="sidebar__separator sidebar--centered" />
 <nav className="sidebar__menu">
-<DayList
-  days={state.days}
-  value={state.day}
-  onChange={setDay}
-/>
+  <DayList
+    days={state.days}
+    value={state.day}
+    onChange={setDay}
+  />
 </nav>
 <img
   className="sidebar__lhl sidebar--centered"
@@ -57,10 +68,11 @@ export default function Application(props) {
 />
       </section>
       <section className="schedule">
-      {dailyAppointments.map(appointment => (
+        {schedule}
+        {/* {dailyAppointments.map(appointment => (
           <Appointment key={appointment.id} {...appointment} />
         ))}
-        <Appointment key="last" time="5pm" />
+        <Appointment key="last" time="5pm" /> */}
       </section>
     </main>
   );
