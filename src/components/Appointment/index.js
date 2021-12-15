@@ -40,7 +40,6 @@ export default function Appointment(props) {
     }).catch(() => transition(ERROR_SAVE, true));
     };
   
-  
   function deleteFunc() {
     transition(DELETING, true);
     props.cancelInterview(props.id)
@@ -48,7 +47,6 @@ export default function Appointment(props) {
       transition(EMPTY)
     }).catch(() => transition(ERROR_DELETE, true));
   };
-
 
   return (
     <article className="appointment">
@@ -80,7 +78,7 @@ export default function Appointment(props) {
       {mode === DELETING && <Status message={"Deleting"} />}
       {mode === CONFIRM && <Confirm
         onCancel={() => back()}
-        message={"Are you sure you want to delete?"}
+        message={"Are you sure you would like to delete?"}
         onConfirm={deleteFunc}
       />}
       {mode === ERROR_SAVE && <Error message={"Could not create appointment"}
