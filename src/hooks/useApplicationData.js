@@ -1,6 +1,8 @@
 import {useState, useEffect} from "react";
+
 import axios from "axios";
 
+//custom hook will return an object with four keys.
 export default function useApplicationData() {
   const [state, setState] = useState({
     day: "Monday",
@@ -9,7 +11,7 @@ export default function useApplicationData() {
     interviewers: {}
   });
   
-
+  
 const fetchFreeSpots = (state, appointments) => {
   const appIds = state.days.filter(day => day.name === state.day);
   const todayApp = appIds[0].appointments;
@@ -47,7 +49,8 @@ const fetchFreeSpots = (state, appointments) => {
     })
   }
   
-    function cancelInterview(id) {
+  //makes an HTTP request and updates the local state.
+  function cancelInterview(id) {
       const appointment = {
         ...state.appointments[id],
         interview: null
@@ -58,19 +61,20 @@ const fetchFreeSpots = (state, appointments) => {
       };
 
   
-    const days = [
-      ...state.days,
+  const days = [
+    ...state.days,
     ]
-    const dayIndex = state.days.findIndex((day) => 
-      day.appointments.includes(id)
+  const dayIndex = state.days.findIndex((day) => 
+    day.appointments.includes(id)
     )
-    const spots = fetchFreeSpots(state, appointments)
+  const spots = fetchFreeSpots(state, appointments)
     
-    const newDay = {
-      ...days[dayIndex], spots
+  const newDay = {
+    ...days[dayIndex], spots
     }
     days[dayIndex] = newDay
 
+    //called when user deletes an interview
     return axios.delete(`/api/appointments/${id}`).then(() => {
       setState(prev => ({...prev, appointments, days}));
     })

@@ -9,7 +9,7 @@ import Status from "./Status";
 import Confirm from "./Confirm";
 import Error from "./Error";
 
-
+//visual modes determine what a user sees based on interactions with UI
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
@@ -22,7 +22,7 @@ const ERROR_DELETE = "ERROR_DELETE";
 
 
 export default function Appointment(props) {
-  
+  //if props.interview has a value render SHOW, else render EMPTY
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
@@ -54,7 +54,6 @@ export default function Appointment(props) {
   return (
     <article className="appointment">
       <Header time={props.time} />
-
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && (
       <Show
@@ -81,7 +80,7 @@ export default function Appointment(props) {
       {mode === DELETING && <Status message={"Deleting"} />}
       {mode === CONFIRM && <Confirm
         onCancel={() => back()}
-        message={"Are you sure you want to delete?"}
+        message={"Are you sure you would like to delete?"}
         onConfirm={deleteFunc}
       />}
       {mode === ERROR_SAVE && <Error message={"Could not create appointment"}

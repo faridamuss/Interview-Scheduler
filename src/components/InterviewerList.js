@@ -1,9 +1,13 @@
 import React from "react";
+
 import InterviewerListItem from "./InterviewerListItem";
+
 import "components/InterviewerList.scss";
+
 import PropTypes from 'prop-types';
 
 export default function InterviewerList(props) {
+//maps over array of interviewers. Each interviewer has an associated id, name, avatar url
   const interviewers = props.interviewers.map(interviewer => {
     return (
       <InterviewerListItem

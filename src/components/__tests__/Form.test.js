@@ -1,6 +1,9 @@
 import React from "react";
+
 import Form from "components/Appointment/Form";
+
 import { render, cleanup } from "@testing-library/react";
+
 import { fireEvent } from "@testing-library/react";
 
 afterEach(cleanup);

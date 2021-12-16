@@ -3,6 +3,9 @@
 ## About Interview Scheduler 
 Interview scheduler is a project that allows users to choose a day, a time, and an interviewer in order to book in appointment. Appointments can me easily edited and updated, or cancelled through the app by clicking the icons in the bottom left hand corner of a booked interview timeslot.
 
+## Final product
+![""]()
+
 ## Main features
  - Interviews can be booked between Monday and Friday.
  - A user can switch between weekdays.
@@ -39,3 +42,16 @@ npm test
 ```sh
 npm run storybook
 ```
+## Dependencies
+- React
+- React-dom
+- React-scripts
+- Axios
+- Sass
+- Prop-types
+- React Test Renderer
+- Babel
+- React Testing Library
+- Storybook
+- Cypress
+- Jest
