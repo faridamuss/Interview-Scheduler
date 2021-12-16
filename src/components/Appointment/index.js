@@ -9,6 +9,7 @@ import Status from "./Status";
 import Confirm from "./Confirm";
 import Error from "./Error";
 
+
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
@@ -19,11 +20,13 @@ const EDIT = "EDIT";
 const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
 
+
 export default function Appointment(props) {
   
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
+
 
   function save(name, interviewer) {
     if(!name || !interviewer) {
@@ -78,7 +81,7 @@ export default function Appointment(props) {
       {mode === DELETING && <Status message={"Deleting"} />}
       {mode === CONFIRM && <Confirm
         onCancel={() => back()}
-        message={"Are you sure you would like to delete?"}
+        message={"Are you sure you want to delete?"}
         onConfirm={deleteFunc}
       />}
       {mode === ERROR_SAVE && <Error message={"Could not create appointment"}
