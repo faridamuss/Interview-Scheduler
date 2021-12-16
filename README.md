@@ -1,25 +1,16 @@
 # Interview Scheduler
 
-## About Interview Scheduler 
-Interview scheduler is a project that allows users to choose a day, a time, and an interviewer in order to book in appointment. Appointments can me easily edited and updated, or cancelled through the app by clicking the icons in the bottom left hand corner of a booked interview timeslot.
+Interview Scheduler is a single-page application that allows a student to choose a day, a time, and an interviewer to book in appointment with a mentor. Appointments can be easily edited and updated, or cancelled through the app by clicking the icons in the bottom left hand corner of a booked interview timeslot.
 
-## Final product
+## Main features of Interview Scheduler
+Appointments can be made between noon and 5pm for each day of the week. When the application is loaded, a request is made to the API server. The appointments are displayed for the selected day. Choosing another day shows that more appointments have been booked. 
 ![""]()
 
-## Main features
- - Interviews can be booked between Monday and Friday.
- - A user can switch between weekdays.
- - A user can book an interview in an empty appointment slot
- - Interviews are booked by typing in a student name and clicking on an interviewer from a list of available interviewers.
- - A user can cancel an existing interview.
- - A user can edit the details of an existing interview.
- - The list of days informs the user how many slots are available for each day.
- - The expected day updates the number of spots available when an interview is booked or canceled.
- - A user is presented with a confirmation when they attempt to cancel an interview.
- - A user is shown an error if an interview cannot be saved or deleted.
- - A user is shown a status indicator while asynchronous operations are in progress.
- - When the user presses the close button of the error they are returned to the Form or Show view (skipping Status and Confirm).
- - The application makes API requests to load and persist data. We do not lose data after a browser refresh.
+When an appointment is created, the user can type in a student name and choose an interviewer from a list. Clicking on the "Save" button will perform a save action. A save action will make a request to the server to persist the change. Immediately, before sending the request, a user will see a status indicator. The request will take some time and the user should know that something is happening. When a response is returned from the server, the status indicator is hidden, and the interview is shown with updated data. The user can edit an interview. This allows them to change the student’s name or chosen interviewer and save those changes to the server.
+![""]()
+
+If an interview is no longer needed, then it can be deleted. Before deleting the interview, the user is asked to provide a confirmation since it is a destructive action. If the server returns an error while performing an operation, a user will see a message. The message can be dismissed be pressing the "Close" button. 
+![""]()
 
 ## Setup
 
