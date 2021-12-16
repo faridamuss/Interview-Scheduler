@@ -4,7 +4,7 @@ Interview Scheduler is a single-page application that allows a student to choose
 
 ## Main features of Interview Scheduler
 Appointments can be made between noon and 5pm for each day of the week. When the application is loaded, a request is made to the API server. The appointments are displayed for the selected day. Choosing another day shows that more appointments have been booked. 
-![""]()
+!["Dashboard gif"](https://github.com/faridamoussaeff/Scheduler/blob/master/docs/chooseaday.gif)
 
 When an appointment is created, the user can type in a student name and choose an interviewer from a list. Clicking on the "Save" button will perform a save action. A save action will make a request to the server to persist the change. Immediately, before sending the request, a user will see a status indicator. The request will take some time and the user should know that something is happening. When a response is returned from the server, the status indicator is hidden, and the interview is shown with updated data. The user can edit an interview. This allows them to change the student’s name or chosen interviewer and save those changes to the server.
 ![""]()
