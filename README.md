@@ -1,6 +1,8 @@
 # Interview Scheduler
 
-Interview Scheduler is a single-page application that allows a student to choose a day, a time, and an interviewer to book in appointment with a mentor. Appointments can be easily edited and updated, or cancelled through the app by clicking the icons in the bottom left hand corner of a booked interview timeslot.
+Scheduler is a React based project that uses a RESTful API to manage interview scheduling for clients. The interactive UI displays messages accordingly and will notify users if there is some kind of error making a request to the server or a user-generated error.
+
+The app also used Storybook to preform isolated component tests, Jest for integration testing and Cypress for end-to-end testing.
 
 ## Main Features of Interview Scheduler
 
